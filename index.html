@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akash Saraswat | Software Developer</title>
+<title>Akash Saraswat | .NET Developer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -13,55 +13,41 @@
   padding:0;
   box-sizing:border-box;
   font-family:'Poppins',sans-serif;
-  transition: background 0.4s ease, color 0.4s ease, border 0.4s ease;
+  transition:all .3s ease;
 }
 
-/* ================= THEME ================= */
-
 :root{
-  --bg1:#0f0c29;
-  --bg2:#302b63;
-  --bg3:#24243e;
+  --bg:#0f0c29;
+  --bg2:#1c1b3a;
   --text:#ffffff;
   --card:rgba(255,255,255,0.08);
-  --nav:rgba(255,255,255,0.05);
+  --nav:rgba(0,0,0,0.6);
   --accent1:#00f5ff;
   --accent2:#ff00c8;
 }
 
-@media (prefers-color-scheme: light){
-  :root{
-    --bg1:#ffffff;
-    --bg2:#f3f4f6;
-    --bg3:#e5e7eb;
-    --text:#111111;
-    --card:rgba(0,0,0,0.05);
-    --nav:rgba(255,255,255,0.85);
-  }
+body.light{
+  --bg:#ffffff;
+  --bg2:#f3f4f6;
+  --text:#111111;
+  --card:rgba(0,0,0,0.05);
+  --nav:rgba(255,255,255,0.9);
 }
 
 body{
-  background: linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg2));
-  background-size:400% 400%;
-  animation: gradientMove 15s ease infinite;
+  background:linear-gradient(135deg,var(--bg),var(--bg2));
   color:var(--text);
   scroll-behavior:smooth;
 }
 
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-/* Scroll Progress */
+/* Scroll bar */
 #progress{
   position:fixed;
   top:0;
   left:0;
   height:4px;
-  background:linear-gradient(to right,var(--accent1),var(--accent2));
   width:0%;
+  background:linear-gradient(to right,var(--accent1),var(--accent2));
   z-index:2000;
 }
 
@@ -69,20 +55,13 @@ body{
 nav{
   position:fixed;
   width:100%;
-  padding:22px 8%;
+  padding:20px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  backdrop-filter:blur(25px);
   background:var(--nav);
-  border-bottom:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(15px);
   z-index:1000;
-  transition: all 0.4s ease;
-}
-
-nav.scrolled{
-  padding:14px 8%;
-  background:rgba(0,0,0,0.7);
 }
 
 .nav-links{
@@ -91,32 +70,23 @@ nav.scrolled{
 }
 
 .nav-links a{
-  color:var(--text);
   text-decoration:none;
+  color:var(--text);
   font-size:14px;
-  position:relative;
 }
 
-.nav-links a::after{
-  content:"";
-  position:absolute;
-  width:0%;
-  height:2px;
-  left:0;
-  bottom:-5px;
-  background:linear-gradient(to right,var(--accent1),var(--accent2));
-  transition:0.3s;
+.toggle-btn{
+  cursor:pointer;
+  padding:6px 14px;
+  border-radius:20px;
+  border:1px solid var(--accent1);
+  font-size:13px;
 }
 
-.nav-links a:hover::after{
-  width:100%;
-}
-
-/* Hamburger */
 .hamburger{
   display:none;
   flex-direction:column;
-  gap:6px;
+  gap:5px;
   cursor:pointer;
 }
 
@@ -124,64 +94,42 @@ nav.scrolled{
   width:25px;
   height:3px;
   background:var(--text);
-  transition:0.4s;
-  border-radius:5px;
 }
 
-.hamburger.active span:nth-child(1){
-  transform:rotate(45deg) translate(5px,5px);
-}
-
-.hamburger.active span:nth-child(2){
-  opacity:0;
-}
-
-.hamburger.active span:nth-child(3){
-  transform:rotate(-45deg) translate(6px,-6px);
-}
-
-/* MOBILE */
 @media(max-width:768px){
   .nav-links{
     position:fixed;
     top:0;
     right:-100%;
+    width:260px;
     height:100vh;
-    width:250px;
+    background:var(--nav);
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:rgba(0,0,0,0.9);
-    backdrop-filter:blur(20px);
-    transition:0.5s ease;
+    transition:.4s;
   }
-  .nav-links.active{
-    right:0;
-  }
-  .hamburger{
-    display:flex;
-  }
+  .nav-links.active{ right:0; }
+  .hamburger{ display:flex; }
 }
 
-/* HERO */
 header{
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:120px 8% 0;
+  padding:100px 8% 0;
 }
 
 .hero{
   display:flex;
-  align-items:center;
-  justify-content:space-between;
   flex-wrap:wrap;
+  justify-content:space-between;
   gap:60px;
 }
 
 .hero-text h1{
-  font-size:60px;
+  font-size:55px;
   background:linear-gradient(to right,var(--accent1),var(--accent2));
   -webkit-background-clip:text;
   color:transparent;
@@ -193,46 +141,26 @@ header{
   opacity:.8;
 }
 
-.hero-text p{
-  margin-top:20px;
-  line-height:1.8;
-  max-width:600px;
-  opacity:.85;
-}
-
 .btn{
   display:inline-block;
   margin-top:30px;
-  padding:15px 38px;
+  padding:14px 35px;
   border-radius:50px;
   background:linear-gradient(45deg,var(--accent2),var(--accent1));
   color:white;
   text-decoration:none;
-  box-shadow:0 8px 30px rgba(255,0,200,0.4);
-}
-
-.btn:hover{
-  transform:translateY(-6px) scale(1.05);
 }
 
 .hero-img img{
-  width:280px;
+  width:260px;
   border-radius:50%;
-  padding:6px;
-  background:linear-gradient(45deg,var(--accent1),var(--accent2));
-  animation:float 4s ease-in-out infinite;
+  border:4px solid var(--accent1);
 }
 
-@keyframes float{
-  50%{transform:translateY(-15px);}
-}
-
-/* SECTIONS */
 section{
   padding:100px 8%;
   opacity:0;
   transform:translateY(40px);
-  transition:0.8s;
 }
 
 section.show{
@@ -242,27 +170,36 @@ section.show{
 
 h2{
   text-align:center;
-  margin-bottom:60px;
-  font-size:36px;
-  background:linear-gradient(to right,var(--accent1),var(--accent2));
-  -webkit-background-clip:text;
-  color:transparent;
+  margin-bottom:50px;
+  font-size:32px;
 }
 
 .card{
   background:var(--card);
-  backdrop-filter:blur(25px);
-  border:1px solid rgba(255,255,255,0.1);
-  padding:35px;
-  border-radius:24px;
-  margin-bottom:30px;
+  padding:25px;
+  border-radius:18px;
+  margin-bottom:25px;
+  backdrop-filter:blur(20px);
+}
+
+.project{
+  background:var(--card);
+  padding:25px;
+  border-radius:18px;
+  margin-bottom:25px;
+  transition:.3s;
+}
+
+.project:hover{
+  transform:translateY(-8px);
+  box-shadow:0 10px 40px rgba(0,255,255,0.3);
 }
 
 .skills span{
   display:inline-block;
   margin:8px;
-  padding:10px 20px;
-  border-radius:30px;
+  padding:8px 18px;
+  border-radius:25px;
   background:var(--card);
 }
 
@@ -278,7 +215,7 @@ footer{
 
 <div id="progress"></div>
 
-<nav id="navbar">
+<nav>
 <strong>Akash Saraswat</strong>
 
 <div class="nav-links" id="navLinks">
@@ -292,128 +229,147 @@ footer{
 <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
 
-<div class="hamburger" id="hamburger" onclick="toggleMenu()">
+<div style="display:flex; gap:15px; align-items:center;">
+<div class="toggle-btn" onclick="toggleTheme()">Theme</div>
+<div class="hamburger" onclick="toggleMenu()">
 <span></span><span></span><span></span>
+</div>
 </div>
 </nav>
 
 <header>
 <div class="hero">
-<div class="hero-text">
+<div>
 <h1>Akash Saraswat</h1>
 <div class="typing" id="typing"></div>
-<p>
-Software Developer with 3+ years of experience designing and developing enterprise-grade insurance workflow applications using ASP.NET MVC, Web API, and SQL Server. Experienced in backend architecture, API integrations, policy lifecycle management, SQL performance tuning, and production deployments.
+<p style="margin-top:20px; max-width:550px;">
+.NET Developer with 3+ years experience building enterprise insurance systems using ASP.NET MVC, Web API & SQL Server.
 </p>
-<a href="AkashCV.pdf" class="btn" download>Download Resume</a>
+<a href="AkashCV.pdf" class="btn">Download Resume</a>
 </div>
+
 <div class="hero-img">
-<img src="akash.jpeg" alt="Akash Saraswat">
+<img src="akash.jpeg">
 </div>
 </div>
 </header>
 
 <section id="about">
-<h2>Professional Summary</h2>
+<h2>About</h2>
 <div class="card">
-Experience in developing enterprise health and motor insurance applications, handling policy flows, endorsement modules, letter generation, schedulers, automated mailers, API integrations, and SQL performance optimization.
+Experienced in developing enterprise-grade health and motor insurance workflow applications including policy lifecycle, endorsements, API integrations, schedulers and production support.
 </div>
 </section>
 
 <section id="experience">
 <h2>Experience</h2>
-
 <div class="card">
-<h3>Eicore Technologies</h3>
-
-<p><strong>Software Engineer</strong><br>
-September 2025 – Present | Gurugram</p>
-<p>
-Leading development of enterprise insurance workflow systems, designing scalable Web APIs,
-optimizing SQL performance, handling production deployments, and mentoring junior developers.
-</p>
-
-<br>
-
-<p><strong>Associate Software Engineer</strong><br>
-March 2023 – August 2025 | Gurugram</p>
-<p>
-Developed policy and endorsement modules, implemented Change Requests from BRD documents,
-worked on API integrations, schedulers, letter generation systems, and production support.
-</p>
-
+Software Engineer – Eicore Technologies (Sep 2025 – Present)<br><br>
+Associate Software Engineer – Eicore Technologies (Mar 2023 – Aug 2025)
 </div>
 </section>
 
 <section id="projects">
 <h2>Projects</h2>
 
-<div class="card">
+<div class="project">
 <h3>Raheja QBE – Health Buzz</h3>
-Worked on policy insurance, endorsement, accounts, letters, APIs, executables and schedulers.
+Policy lifecycle management, endorsements, APIs, schedulers, automated letters.
 </div>
 
-<div class="card">
+<div class="project">
 <h3>PARK – Health Buzz (TPA Domain)</h3>
-Developed multiple Change Requests and enhanced claim workflows.
+Change Requests implementation and workflow optimization.
 </div>
 
-<div class="card">
-<h3>HB Core Base – Health Insurance</h3>
-Worked on policy, endorsement and letter modules using ASP.NET MVC and SQL Server.
+<div class="project">
+<h3>HB Core Base</h3>
+Policy & endorsement modules using ASP.NET MVC and SQL Server.
 </div>
 
-<div class="card">
+<div class="project">
 <h3>Motor Insurance Portal</h3>
-Developed policy issuance portal integrated with core insurance application.
+Integrated issuance portal connected with core system.
 </div>
 
-<div class="card">
-<h3>Magma (MHDI) – Health Insurance</h3>
-Worked on policy insurance, endorsement modules and letter generation.
+<div class="project">
+<h3>Magma (MHDI)</h3>
+Insurance module enhancements and automation.
 </div>
 
 </section>
 
 <section id="skills">
 <h2>Technical Skills</h2>
+
+<div class="card">
+<h3>Backend & Frameworks</h3>
 <div class="skills">
-<span>C#</span><span>ASP.NET MVC</span><span>ASP.NET Web API</span>
-<span>Entity Framework</span><span>ADO.NET</span>
-<span>SQL Server</span><span>HTML</span><span>CSS</span>
-<span>JavaScript</span><span>Git</span><span>Postman</span>
+<span>C#</span>
+<span>.NET</span>
+<span>.NET Framework</span>
+<span>ASP.NET</span>
+<span>ASP.NET MVC</span>
+<span>ASP.NET Web API</span>
 </div>
+</div>
+
+<div class="card">
+<h3>Database</h3>
+<div class="skills">
+<span>SQL Server</span>
+<span>MySQL</span>
+</div>
+</div>
+
+<div class="card">
+<h3>Tools & Quality</h3>
+<div class="skills">
+<span>SonarQube</span>
+<span>Production Deployment</span>
+<span>Debugging</span>
+<span>Git</span>
+<span>Postman</span>
+</div>
+</div>
+
+<div class="card">
+<h3>Development Process</h3>
+<div class="skills">
+<span>SDLC</span>
+<span>Requirement Analysis</span>
+<span>Change Request Implementation</span>
+</div>
+</div>
+
 </section>
 
 <section id="tools">
-<h2>Tools & Platforms</h2>
+<h2>Tools</h2>
 <div class="skills">
-<span>Visual Studio 2022</span>
-<span>VS Code</span>
-<span>IIS</span>
+<span>Visual Studio</span>
 <span>SSMS</span>
+<span>IIS</span>
 <span>Postman</span>
+<span>Git</span>
 <span>Jira</span>
-<span>GitHub</span>
 </div>
 </section>
 
 <section id="certifications">
-<h2>Certifications & Achievements</h2>
+<h2>Certifications</h2>
 <div class="card">
 Matrix Algebra for Engineers – Coursera<br>
-C++ OOPS – Great Learning<br>
-Linux Workshop – Alpha Delving<br>
-4★ C++ | 2★ Java | 2★ C – HackerRank
+Python Data Structures – Coursera<br>
+Linux Workshop – Alpha Delving
 </div>
 </section>
 
 <section id="education">
 <h2>Education</h2>
 <div class="card">
-B.Tech – Computer Science & Engineering | RKGIT Ghaziabad | 2019 – 2023<br>
-Intermediate (Class XII) | SRS International School | 2019<br>
-High School (Class X) | Prasad Public School | 2017
+B.Tech – Computer Science & Engineering<br>
+RKGIT Ghaziabad (2019–2023)
 </div>
 </section>
 
@@ -427,41 +383,30 @@ High School (Class X) | Prasad Public School | 2017
 </section>
 
 <footer>
-© 2026 Akash Saraswat | Software Developer
+© 2026 Akash Saraswat | .NET Developer
 </footer>
 
 <script>
-const navLinks=document.getElementById("navLinks");
-const hamburger=document.getElementById("hamburger");
-const navbar=document.getElementById("navbar");
-
 function toggleMenu(){
-navLinks.classList.toggle("active");
-hamburger.classList.toggle("active");
+document.getElementById("navLinks").classList.toggle("active");
 }
-
 function closeMenu(){
-navLinks.classList.remove("active");
-hamburger.classList.remove("active");
+document.getElementById("navLinks").classList.remove("active");
 }
-
+function toggleTheme(){
+document.body.classList.toggle("light");
+}
 window.addEventListener("scroll",()=>{
 let winScroll=document.documentElement.scrollTop;
 let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
 document.getElementById("progress").style.width=(winScroll/height)*100+"%";
-navbar.classList.toggle("scrolled",winScroll>50);
-});
-
-const sections=document.querySelectorAll("section");
-window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
+document.querySelectorAll("section").forEach(sec=>{
 if(window.scrollY+window.innerHeight-100>sec.offsetTop){
 sec.classList.add("show");
 }
 });
 });
-
-const text="Backend Developer | ASP.NET MVC | Web API | SQL Server";
+const text=".NET Developer | ASP.NET MVC | Web API | SQL Server";
 let i=0;
 function type(){
 if(i<text.length){
@@ -475,4 +420,3 @@ type();
 
 </body>
 </html>
-
